@@ -1,4 +1,5 @@
-galao
+galão
 =====
 
-Interprete para la compilacion de markdown a impress.js o reveal.js
+Script for compilation of markdown text to slides in impress.js or reveal.js.
+
