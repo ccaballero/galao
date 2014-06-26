@@ -1,0 +1,58 @@
+\documentclass[letter,twoside,11pt]{article}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+
+\usepackage{graphicx}
+\usepackage{pstricks}
+
+\usepackage{anysize}
+\marginsize{3cm}{2cm}{2cm}{3cm}
+
+\usepackage{amsmath}
+\usepackage{array}
+
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{Proyecto Galão}
+\fancyfoot[CO,CE]{\thepage\ de \pageref{LastPage}}
+
+\special{papersize=215.9mm,279.4mm}
+
+\newcommand{\blankpage}{
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\newpage
+}
+
+\renewcommand{\arraystretch}{1.2}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+\vspace*{2.15cm}
+{\Large \textbf{PROYECTO GALÃO}}\\
+\vspace*{3.5cm}
+\end{center}
+\end{titlepage}
+
+\blankpage
+
+\section{Introducción}
+\section{Antecedentes}
+\section{Definición del Problema}
+\section{Objetivo General}
+\section{Objetivos Específicos}
+\section{Proceso de Desarrollo}
+\section{Herramientas}
+\section{Justificación}
+
+\end{document}

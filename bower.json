@@ -1,13 +1,10 @@
 {
-  "name": "angular",
-  "version": "0.0.0",
+  "name": "galão",
+  "private": true,
   "dependencies": {
-    "angular": "1.2.15",
-    "json3": "~3.2.6",
-    "es5-shim": "~2.1.0"
+    "modernizr": "~2.6.2",
+    "jquery": "~1.11.0",
+    "reveal.js": "~2.6.2"
   },
-  "devDependencies": {
-    "angular-mocks": "1.2.15",
-    "angular-scenario": "1.2.15"
-  }
+  "devDependencies": {}
 }
