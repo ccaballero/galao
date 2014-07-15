@@ -2,10 +2,6 @@
 'use strict';
 
 // # Globbing
-// for performance reasons we're only matching one level down:
-// 'test/spec/{,*/}*.js'
-// use this if you want to recursively match all subfolders:
-// 'test/spec/**/*.js'
 
 module.exports = function (grunt) {
 
@@ -40,10 +36,6 @@ module.exports = function (grunt) {
                     livereload: true
                 }
             },
-            jstest: {
-                files: ['test/spec/{,*/}*.js'],
-                tasks: ['test:watch']
-            },
             gruntfile: {
                 files: ['Gruntfile.js']
             },
@@ -61,6 +53,7 @@ module.exports = function (grunt) {
                 },
                 files: [
                     '<%= config.app %>/{,*/}*.html',
+                    'examples/{,*/}*.html',
                     '.tmp/styles/{,*/}*.css',
                     '<%= config.app %>/images/{,*/}*'
                 ]
@@ -82,20 +75,7 @@ module.exports = function (grunt) {
                         return [
                             connect.static('.tmp'),
                             connect().use('/bower_components', connect.static('./bower_components')),
-                            connect.static(config.app)
-                        ];
-                    }
-                }
-            },
-            test: {
-                options: {
-                    open: false,
-                    port: 9001,
-                    middleware: function(connect) {
-                        return [
-                            connect.static('.tmp'),
-                            connect.static('test'),
-                            connect().use('/bower_components', connect.static('./bower_components')),
+                            connect().use('/examples', connect.static('./examples')),
                             connect.static(config.app)
                         ];
                     }
@@ -134,18 +114,7 @@ module.exports = function (grunt) {
                 'Gruntfile.js',
                 '<%= config.app %>/scripts/{,*/}*.js',
                 '!<%= config.app %>/scripts/vendor/*',
-                'test/spec/{,*/}*.js'
             ]
-        },
-
-        // Mocha testing framework configuration options
-        mocha: {
-            all: {
-                options: {
-                    run: true,
-                    urls: ['http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/index.html']
-                }
-            }
         },
 
         // Compiles Sass to CSS and generates necessary files if requested
@@ -354,9 +323,6 @@ module.exports = function (grunt) {
                 'sass:server',
                 'copy:styles'
             ],
-            test: [
-                'copy:styles'
-            ],
             dist: [
                 'sass',
                 'copy:styles',
@@ -381,26 +347,6 @@ module.exports = function (grunt) {
         ]);
     });
 
-    grunt.registerTask('server', function (target) {
-        grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-        grunt.task.run([target ? ('serve:' + target) : 'serve']);
-    });
-
-    grunt.registerTask('test', function (target) {
-        if (target !== 'watch') {
-            grunt.task.run([
-                'clean:server',
-                'concurrent:test',
-                'autoprefixer'
-            ]);
-        }
-
-        grunt.task.run([
-            'connect:test',
-            'mocha'
-        ]);
-    });
-
     grunt.registerTask('build', [
         'clean:dist',
         'useminPrepare',
@@ -418,7 +364,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', [
         'newer:jshint',
-        'test',
         'build'
     ]);
 };
