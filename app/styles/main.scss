@@ -1,36 +1,78 @@
 // bower:scss
 // endbower
 
+$c_gray: #303030;
+
+/* forever in Paris */
+/* http://www.colourlovers.com/palette/3421154/forever_in_Paris */
+$c_pinktea: #BB7D6E; /*187,125,110*/
+$c_fictional: #864450; /*134,68,80*/
+$c_233: #D49E6F; /*212,158,111*/
+$c_imdreaming: #EBC48B; /*235,196,139*/
+$c_lemonmilk: #F9E2AC; /*249,226,172*/
+
 body {
-    background: #fafafa;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
+    color: $c_gray;
+    font-size: 1.6rem;
 }
 
-$color1: #0cc0cc;
-
-#wrapper {
-    position: absolute;
-    width: 50vw;
-    height: 50vh;
-    margin-top: 25vh;
-    margin-left: 25vw;
-
-    h1 {
-        text-align: center;
-    }
-
-    ul {
-        list-style: none;
-        li {
-            a {
-                color: $color1;
-                text-decoration: none;
-                &:hover {
-                    color: darken($color1, 20%);
-                }
-            }
+@mixin link {
+    a {
+        color: $c_gray;
+        text-decoration: none;
+        &:hover {
+            color: $c_fictional;
         }
     }
 }
 
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: stretch;
+    align-items: center;
+    height: 95vh;
+
+    >section {
+        max-width: 480px;
+        order: 0;
+        flex: 0 1 auto;
+        align-self: auto;
+
+        h1 {
+            text-align: center;
+            color: $c_fictional;
+        }
+
+        p {
+            padding: 0 0.3rem;
+        }
+        p, li {
+            font-size: 1.3rem;
+            line-height: 1.8rem;
+        }
+
+        ol { li { @include link; }}
+    }
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+
+    ul {
+        list-style: none;
+        li {
+            float: left;
+            @include link;
+            a {
+                font-size: 0.95rem;
+                padding: 0 0.5rem;
+            }
+        }
+    }
+}
