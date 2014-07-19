@@ -1,0 +1,61 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'websocket',
+1 verbose cli   '--save' ]
+2 info using npm@1.4.9
+3 info using node@v0.10.28
+4 warn package.json galao@0.0.0 No repository field.
+5 verbose readDependencies using package.json deps
+6 verbose cache add [ 'websocket', null ]
+7 verbose cache add name=undefined spec="websocket" args=["websocket",null]
+8 verbose parsed url { protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: 'websocket',
+8 verbose parsed url   path: 'websocket',
+8 verbose parsed url   href: 'websocket' }
+9 silly lockFile 67c371fd-websocket websocket
+10 verbose lock websocket /home/jacobian/.npm/67c371fd-websocket.lock
+11 silly lockFile 67c371fd-websocket websocket
+12 silly lockFile 67c371fd-websocket websocket
+13 verbose addNamed [ 'websocket', '' ]
+14 verbose addNamed [ null, '*' ]
+15 silly lockFile 75462c75-websocket websocket@
+16 verbose lock websocket@ /home/jacobian/.npm/75462c75-websocket.lock
+17 silly addNameRange { name: 'websocket', range: '*', hasData: false }
+18 verbose url raw websocket
+19 verbose url resolving [ 'https://registry.npmjs.org/', './websocket' ]
+20 verbose url resolved https://registry.npmjs.org/websocket
+21 info trying registry request attempt 1 at 12:25:55
+22 http GET https://registry.npmjs.org/websocket
+23 info retry will retry, error on last attempt: Error: connect EHOSTUNREACH
+24 info trying registry request attempt 2 at 12:26:05
+25 http GET https://registry.npmjs.org/websocket
+26 info retry will retry, error on last attempt: Error: connect EHOSTUNREACH
+27 info trying registry request attempt 3 at 12:27:05
+28 http GET https://registry.npmjs.org/websocket
+29 silly lockFile 75462c75-websocket websocket@
+30 silly lockFile 75462c75-websocket websocket@
+31 error Error: connect EHOSTUNREACH
+31 error     at errnoException (net.js:904:11)
+31 error     at Object.afterConnect [as oncomplete] (net.js:895:19)
+32 error If you need help, you may report this *entire* log,
+32 error including the npm and node versions, at:
+32 error     <http://github.com/npm/npm/issues>
+33 error System Linux 3.14.4-gentoo
+34 error command "/usr/bin/node" "/usr/bin/npm" "install" "websocket" "--save"
+35 error cwd /home/jacobian/galao.local
+36 error node -v v0.10.28
+37 error npm -v 1.4.9
+38 error syscall connect
+39 error code EHOSTUNREACH
+40 error errno EHOSTUNREACH
+41 verbose exit [ 1, true ]
