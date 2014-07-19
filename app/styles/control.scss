@@ -1,0 +1,20 @@
+$color: #cc00cc;
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#control {
+    background-color: $color;
+    width: 100vw;
+    height: 100vh;
+}
+
+a {
+    float: left;
+    height: 10vw;
+    width: 10vw;
+    background-color: #00ddcc;
+    margin: 10px;
+}
