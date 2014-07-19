@@ -1,4 +1,24 @@
-$color: #cc00cc;
+$color1: #413F52;
+$color2: #24828F;
+$color3: #07C5A4;
+$color4: #96D9B0;
+$color5: #EDF8FA;
+
+@mixin flex($direction) {
+    display: flex;
+    flex-direction: $direction;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+@mixin gradient($color) {
+    $color2: $color;
+    $color3: darken($color,2%);
+    $color1: lighten($color,10%);
+
+    background: radial-gradient(ellipse at center,$color1 0%,$color2 55%,$color3 100%); /* W3C */
+}
 
 body {
     margin: 0;
@@ -6,15 +26,35 @@ body {
 }
 
 #control {
-    background-color: $color;
+    background-color: $color1;
     width: 100vw;
     height: 100vh;
 }
 
-a {
-    float: left;
-    height: 10vw;
-    width: 10vw;
-    background-color: #00ddcc;
-    margin: 10px;
+#vertical {
+    @include flex(column);
 }
+
+#horizontal {
+    @include flex(row);
+    justify-content: space-between;
+    width: 100%;
+}
+
+a {
+    width: 33vw;
+    height: 33vh;
+    border-radius: 1rem;
+    box-shadow: 0rem 0.05rem 1rem #000000;
+    border: 0.15rem solid $color2;
+    box-sizing: border-box;
+    cursor: pointer;
+    text-align: center;
+    @include gradient($color2);
+    @include flex(column);
+    img {
+        width: auto;
+        height: 50%;
+    }
+}
+
