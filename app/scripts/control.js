@@ -1,26 +1,26 @@
-window.onload = function(){
-    window.WebSocket = window.WebSocket || window.MozWebSocket;
-    var connection = new WebSocket('ws://localhost:9091');
+"use strict";
+
+$(function(){
+    var host='localhost';
+    var port='9001';
+
+    console.log('starting the remote control');
+    window.WebSocket=window.WebSocket||window.MozWebSocket;
+    var connection=new WebSocket('ws://'+host+':'+port);
 
     connection.onopen=function(){};
     connection.onerror=function(error){};
     connection.onmessage=function(message){};
 
-    document.getElementById('prev').onclick=function(){
-        console.log('prev');
-        connection.send(JSON.stringify({action:'prev'}));
+    var f=function(connection,task){
+        console.log(task);
+        connection.send(JSON.stringify({action:task}));
     }
-    document.getElementById('next').onclick=function(){
-        console.log('next');
-        connection.send(JSON.stringify({action:'next'}));
-    }
-    document.getElementById('up').onclick=function(){
-        console.log('up');
-        connection.send(JSON.stringify({action:'up'}));
-    }
-    document.getElementById('down').onclick=function(){
-        console.log('down');
-        connection.send(JSON.stringify({action:'down'}));
-    }
-};
+
+
+    $('.up').click(function(){f(connection,'up')});
+    $('.down').click(function(){f(connection,'down')});
+    $('.prev').click(function(){f(connection,'prev')});
+    $('.next').click(function(){f(connection,'next')});
+});
 

@@ -1,28 +1,11 @@
-// bower:scss
-// endbower
-
-$c_gray: #303030;
-
-/* forever in Paris */
-/* http://www.colourlovers.com/palette/3421154/forever_in_Paris */
-$c_pinktea: #BB7D6E; /*187,125,110*/
-$c_fictional: #864450; /*134,68,80*/
-$c_233: #D49E6F; /*212,158,111*/
-$c_imdreaming: #EBC48B; /*235,196,139*/
-$c_lemonmilk: #F9E2AC; /*249,226,172*/
-
-body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: $c_gray;
-    font-size: 1.6rem;
-}
+@import "base";
 
 @mixin link {
     a {
         color: $c_gray;
         text-decoration: none;
         &:hover {
-            color: $c_fictional;
+            background-color: $c_c5;
         }
     }
 }
@@ -44,14 +27,15 @@ body {
 
         h1 {
             text-align: center;
-            color: $c_fictional;
+            margin-top: 0;
+            color: $c_c1;
         }
 
         p {
             padding: 0 0.3rem;
         }
         p, li {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             line-height: 1.8rem;
         }
 
@@ -72,7 +56,9 @@ footer {
             a {
                 font-size: 0.95rem;
                 padding: 0 0.5rem;
+                color: $c_c2;
             }
         }
     }
 }
+
