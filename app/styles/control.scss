@@ -1,8 +1,4 @@
-$color1: #413F52;
-$color2: #24828F;
-$color3: #07C5A4;
-$color4: #96D9B0;
-$color5: #EDF8FA;
+@import "base";
 
 @mixin flex($direction) {
     display: flex;
@@ -12,49 +8,51 @@ $color5: #EDF8FA;
     align-content: center;
     align-items: center;
 }
+
 @mixin gradient($color) {
     $color2: $color;
     $color3: darken($color,2%);
     $color1: lighten($color,10%);
 
-    background: radial-gradient(ellipse at center,$color1 0%,$color2 55%,$color3 100%); /* W3C */
+    background: radial-gradient(ellipse at center,
+        $color1 0%,$color2 55%,$color3 100%);
 }
 
-body {
-    margin: 0;
-    padding: 0;
+@mixin background($image) {
+    background: {
+        image: $image;
+        repeat: no-repeat;
+        position: center;
+    }
 }
 
 #control {
-    background-color: $color1;
-    width: 100vw;
-    height: 100vh;
-}
+    margin: 5vh 5vw;
+    width: 90vw;
+    height: 90vh;
 
-#vertical {
-    @include flex(column);
-}
-
-#horizontal {
-    @include flex(row);
-    justify-content: space-between;
-    width: 100%;
-}
-
-a {
-    width: 33vw;
-    height: 33vh;
-    border-radius: 1rem;
-    box-shadow: 0rem 0.05rem 1rem #000000;
-    border: 0.15rem solid $color2;
-    box-sizing: border-box;
-    cursor: pointer;
-    text-align: center;
-    @include gradient($color2);
-    @include flex(column);
-    img {
-        width: auto;
-        height: 50%;
+    #vertical {
+        @include flex(column);
+        height: 100%;
+        #horizontal {
+            @include flex(row);
+            justify-content: space-between;
+            width: 100%;
+        }
     }
+    div.button {
+        cursor: pointer;
+        width: 30vw;
+        height: 30vh;
+        box-sizing: border-box;
+        /*border: 0.1rem solid $c_c1;*/
+        /*border-radius: 1rem;*/
+        /*box-shadow: 0rem 0.05rem 0.25rem #000000;*/
+        /*@include gradient($c_c5);*/
+    }
+    div.up {   @include background(url(/images/upload82.svg)); }
+    div.down { @include background(url(/images/down53.svg)); }
+    div.next { @include background(url(/images/right133.svg)); }
+    div.prev { @include background(url(/images/back36.svg)); }
 }
 
