@@ -43,23 +43,18 @@ div.overlay-content {
 #settings {
     height: 100px;
     width: 100%;
-    div {
-        margin: 1.0rem;
-        label {
-            font-size: 2.0rem;
-            width: 20%;
-            display: inline-block;
-            text-align: right;
-            padding-right: 0.3rem;
+
+    .wrapper {
+        margin: 0.4rem 2.0rem 0rem 2.0rem;
+        input, button {
+            margin: 1.0rem 0rem;
+            padding: 3px;
+            width: 100%;
+            font-size: 1.8rem;
+            border: 1px solid $c_c3;
         }
-        input {
-            padding: 0.1rem 0.5rem;
-            width: 70%;
-            font-size: 2.0rem;
-        }
-        input[type="submit"] {
-            margin-left: 22%;
-            width: 58%;
+        button {
+            width: 100%;
             background-color: $c_c3;
             border: none;
         }
