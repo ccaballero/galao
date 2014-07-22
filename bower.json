@@ -1,12 +1,15 @@
 {
-  "name": "galao",
-  "private": true,
-  "dependencies": {
-    "modernizr": "~2.6.2",
-    "jquery": "~1.11.0",
-    "reveal.js": "~2.6.2",
-    "impress.js": "~0.5.3"
-  },
-  "devDependencies": {}
+    "name": "galao",
+    "private": true,
+    "dependencies": {
+        "modernizr": "~2.6.2",
+        "jquery": "~1.11.0",
+        "reveal.js": "~2.6.2",
+        "impress.js": "~0.5.3",
+        "pushy": "~0.9.1",
+        "font-awesome": "~4.1.0",
+        "overlay-js": "~0.1.2"
+    },
+    "devDependencies": {}
 }
 

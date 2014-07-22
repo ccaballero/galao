@@ -7,30 +7,68 @@
         <link rel="shortcut icon" href="/favicon.ico">
         <!-- build:css styles/vendor.css -->
         <!-- bower:css -->
+        <link rel="stylesheet" href="/bower_components/pushy/css/pushy.css" />
+        <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="/bower_components/overlay-js/overlay.css" />
         <!-- endbower -->
         <!-- endbuild -->
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/control.css">
         <!-- endbuild -->
         <!-- build:js scripts/vendor/modernizr.js -->
-        <script src="../bower_components/modernizr/modernizr.js"></script>
+        <script src="/bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
     </head>
     <body>
+        <nav class="pushy pushy-left">
+            <ul>
+                <input type="text" />
+            </ul>
+        </nav>
+        <div class="site-overlay"></div>
+
+        <header class="push">
+            <div class="menu-btn">
+                <i class="fa fa-bars fa-lg"></i>
+            </div>
+            <h1>galão</h1>
+            <a class="right settings">
+                <i class="fa fa-gears"></i>
+            </a>
+        </header>
         <div id="control">
             <div id="vertical">
-                <div class="button up"></div>
+                <div class="up fa fa-chevron-circle-up"></div>
                 <div id="horizontal">
-                    <div class="button prev"></div>
-                    <div class="button next"></div>
+                    <div class="prev fa fa-chevron-circle-left"></div>
+                    <div class="next fa fa-chevron-circle-right"></div>
                 </div>
-                <div class="button down"></div>
+                <div class="down fa fa-chevron-circle-down"></div>
             </div>
         </div>
+
+        <script type="text/html" id="settings">
+        <div id="settings">
+            <div>
+                <label>Host:</label>
+                <input type="text" name="host"
+                placeholder="type the host ..." />
+            </div>
+            <div>
+                <label>Port:</label>
+                <input type="text" name="port" placeholder="type the port ..." />
+            </div>
+            <div>
+                <input type="submit" value="connect" />
+            </div>
+        </div>
+        </script>
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="/bower_components/jquery/dist/jquery.js"></script>
+        <script src="/bower_components/pushy/js/pushy.min.js"></script>
+        <script src="/bower_components/overlay-js/overlay.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 

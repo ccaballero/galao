@@ -17,10 +17,17 @@ $(function(){
         connection.send(JSON.stringify({action:task}));
     }
 
-
     $('.up').click(function(){f(connection,'up')});
     $('.down').click(function(){f(connection,'down')});
     $('.prev').click(function(){f(connection,'prev')});
     $('.next').click(function(){f(connection,'next')});
+
+    var sample_content = $('#settings').html();
+    var overlay = new Overlay();
+
+    $('.settings').click(function(){
+        overlay.append_content(sample_content);
+        overlay.show();
+    });
 });
 
