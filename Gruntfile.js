@@ -22,28 +22,31 @@ module.exports=function(grunt){
         ]);
     });
 
-    grunt.registerTask('build:fxos', [
-        'clean:fxos',
-        'useminPrepare:fxos',
-        'concurrent:dist'/*
+    grunt.registerTask('build', [
+        'clean:dist',
+        'useminPrepare',
+        'concurrent:dist',
         'autoprefixer',
         'concat',
         'cssmin',
         'uglify',
         'copy:dist',
-        'modernizr',
+        'copy:fonts',
         'rev',
         'usemin',
-        'htmlmin'*/
+        'htmlmin'
     ]);
 
     grunt.initConfig({
         clean: {
             server:'.tmp',
-            fxos:{
-                file:[{
+            dist:{
+                files:[{
                     dot:true,
-                    src:['.tmp','fxos']
+                    src:[
+                        '.tmp',
+                        'dist/*'
+                    ]
                 }]
             }
         },
@@ -52,6 +55,10 @@ module.exports=function(grunt){
             server:[
                 'sass:server',
                 'copy:styles'
+            ],
+            dist:[
+                'sass:server',
+                'copy:dist'
             ]
         },
 
@@ -79,6 +86,28 @@ module.exports=function(grunt){
                 cwd:'app/styles',
                 dest:'.tmp/styles/',
                 src:'{,*/}*.css'
+            },
+            fonts:{
+                expand:true,
+                dot:true,
+                cwd:'bower_components/font-awesome/fonts',
+                src: ['**'],
+                dest: 'dist/fonts'
+            },
+            dist:{
+                files:[{
+                    expand:true,
+                    dot:true,
+                    cwd:'app',
+                    dest:'dist',
+                    src: [
+                        '*.{ico,png,txt}',
+                        '.htaccess',
+                        'images/{,*/}*.webp',
+                        '{,*/}*.html',
+                        'styles/fonts/{,*/}*.*'
+                    ]
+                }]
             }
         },
 
@@ -86,6 +115,14 @@ module.exports=function(grunt){
             options:{
                 browsers:['last 1 version']
             },
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '.tmp/styles/',
+                    src: '{,*/}*.css',
+                    dest: '.tmp/styles/'
+                }]
+            }
         },
 
         connect:{
@@ -168,9 +205,74 @@ module.exports=function(grunt){
         },
 
         useminPrepare:{
-            fxos:{
-                options:{dest:'fxos'},
-                html:'app/control.html'
+            options:{
+                dest:'dist'
+            },
+            html: 'app/control.html'
+        },
+
+        concat:{},
+
+        cssmin: {
+            dist: {
+                files: {
+                    'dist/styles/main.css': [
+                        '.tmp/styles/palette.css',
+                        '.tmp/styles/base.css',
+                        '.tmp/styles/main.css'
+                    ],
+                    'dist/styles/control.css': [
+                        '.tmp/styles/palette.css',
+                        '.tmp/styles/base.css',
+                        '.tmp/styles/overlay.css',
+                        '.tmp/styles/control.css'
+                    ]
+                }
+            }
+        },
+
+        uglify: {},
+
+        rev:{
+            dist:{
+                files:{
+                    src:[
+                        'dist/scripts/{,*/}*.js',
+                        'dist/styles/{,*/}*.css',
+                        'dist/images/{,*/}*.*',
+                        'dist/styles/fonts/{,*/}*.*',
+                        'dist/*.{ico,png}'
+                    ]
+                }
+            }
+        },
+
+        usemin:{
+            options:{
+                assetsDirs:['dist','dist/images']
+            },
+            html:['dist/{,*/}*.html'],
+            css:['dist/styles/{,*/}*.css']
+        },
+
+        htmlmin:{
+            dist:{
+                options:{
+                    collapseBooleanAttributes:true,
+                    collapseWhitespace:true,
+                    removeAttributeQuotes:true,
+                    removeCommentsFromCDATA:true,
+                    removeEmptyAttributes:true,
+                    removeOptionalTags:true,
+                    removeRedundantAttributes:true,
+                    useShortDoctype:true
+                },
+                files:[{
+                    expand:true,
+                    cwd:'dist',
+                    src:'{,*/}*.html',
+                    dest:'dist'
+                }]
             }
         }
     });
