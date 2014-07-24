@@ -19,8 +19,7 @@ $(function(){
 
     connection.onopen=function(){
         console.log('connect to the websocket');
-    }
-    connection.onerror=function(error){};
+    };
 
     connection.onmessage=function(message){
         var json=JSON.parse(message.data);
@@ -28,11 +27,11 @@ $(function(){
         switch(json.action){
             case 'next':
                 Reveal.right();
-                break;  
-           case 'prev':
+                break;
+            case 'prev':
                 Reveal.left();
                 break;
-           case 'up':
+            case 'up':
                 Reveal.up();
                 break;
             case 'down':

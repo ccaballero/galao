@@ -22,10 +22,10 @@ module.exports=function(grunt){
         ]);
     });
 
-    grunt.registerTask('build', [
-        'clean:dist',
-        'useminPrepare',
-        'concurrent:dist',
+    grunt.registerTask('build:fxos', [
+        'clean:fxos',
+        'useminPrepare:fxos',
+        'concurrent:dist'/*
         'autoprefixer',
         'concat',
         'cssmin',
@@ -34,12 +34,18 @@ module.exports=function(grunt){
         'modernizr',
         'rev',
         'usemin',
-        'htmlmin'
+        'htmlmin'*/
     ]);
 
     grunt.initConfig({
-        clean:{
-            server:'.tmp'
+        clean: {
+            server:'.tmp',
+            fxos:{
+                file:[{
+                    dot:true,
+                    src:['.tmp','fxos']
+                }]
+            }
         },
 
         concurrent:{
@@ -146,6 +152,25 @@ module.exports=function(grunt){
                         PORT:'9001'
                     }
                 }
+            }
+        },
+
+        jshint: {
+            options: {
+                jshintrc: '.jshintrc',
+                reporter: require('jshint-stylish')
+            },
+            all: [
+                'Gruntfile.js',
+                'app/scripts/{,*/}*.js',
+                'app/scripts/vendor/*'
+            ]
+        },
+
+        useminPrepare:{
+            fxos:{
+                options:{dest:'fxos'},
+                html:'app/control.html'
             }
         }
     });
