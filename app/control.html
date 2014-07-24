@@ -22,19 +22,19 @@
     <body>
         <nav class="pushy pushy-left">
             <ul>
-                <input type="text" />
+                <li>TEST</li>
             </ul>
         </nav>
         <div class="site-overlay"></div>
 
         <header class="push">
-            <div class="menu-btn">
-                <i class="fa fa-bars fa-lg"></i>
+            <div class="left">
+                <a class="menu-btn fa fa-bars fa-lg"></a>
             </div>
-            <h1>galão</h1>
-            <a class="right settings">
-                <i class="fa fa-gears"></i>
-            </a>
+            <div class="right">
+                <a class="settings fa fa-gears"></a>
+            </div>
+            <h1>galao</h1>
         </header>
         <div id="control">
             <div id="vertical">
@@ -46,17 +46,16 @@
                 <div class="down fa fa-chevron-circle-down"></div>
             </div>
         </div>
-
-        <script type="text/html" id="settings">
         <div id="settings">
-            <div class="wrapper">
-                <input type="text" name="host"
-                placeholder="Host ..." />
-                <input type="text" name="port"
-                placeholder="Port ..." />
-                <button class="connect">connect</button>
-            </div>
+            <div class="overlay"></div>
+            <div class="overlay-background"></div>
         </div>
+        <script type="text/html" id="connect">
+            <input type="text" name="host"
+            placeholder="Host ..." />
+            <input type="text" name="port"
+            placeholder="Port ..." />
+            <button class="connect">connect</button>
         </script>
 
         <!-- build:js scripts/vendor.js -->

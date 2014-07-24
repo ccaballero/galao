@@ -1,63 +1,75 @@
 @import "palette";
 
-.mod-overlay-background {
-    background-color: rgba(0, 0, 0, .8);
+@mixin modal {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
-div.overlay-content {
-    height: 50vh;
-    width: 90vw;
-
-    .overlay-header {
-        border-bottom: 1px solid #e2e2e2;
-        overflow: hidden;
-        position: relative;
-
-        .close {
-            color: black;
-            float: right;
-            font-size: 18px;
-            height: 21px;
-            line-height: 22px;
-            margin: 14px 16px 12px;
-            text-align: center;
-            text-decoration: none;
-            width: 22px;
-        }
-    }
-}
-
-.mod-overlay {
-    .close:after {
-        content: "✕";
-    }
-    .close:hover {
-        color: #ED0103;
-    }
-    .overlay-content .text {
-        font: normal 15px/24px "Georgia", serif;
-        padding: 11px 33px;
-    }
+@mixin flex {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
 }
 
 #settings {
-    height: 100px;
-    width: 100%;
+    .overlay, .overlay-background {
+        display: none;
+    }
+    .overlay.visible {
+        @include modal;
+        z-index: 35;
 
-    .wrapper {
-        margin: 0.4rem 2.0rem 0rem 2.0rem;
-        input, button {
-            margin: 1.0rem 0rem;
-            padding: 3px;
-            width: 100%;
-            font-size: 1.8rem;
-            border: 1px solid $c_c3;
+        .overlay-content {
+            @include flex;
+            width: 80%;
+            margin: 0 auto;
+
+            .overlay-header {
+                width: 100%;
+                overflow: hidden;
+                position: relative;
+
+                .close {
+                    color: #ffffff;
+                    float: right;
+                    font-size: 1.6rem;
+                    height: 21px;
+                    line-height: 22px;
+                    margin: 14px 4px 12px;
+                    text-align: center;
+                    text-decoration: none;
+                    width: 22px;
+                }
+                .close:after {
+                    content: 'x';
+                }
+                .close:hover {
+                    color: $c_c3;
+                }
+            }
+
+            input, button {
+                margin: 0.75rem 0rem;
+                padding: 3px;
+                width: 100%;
+                font-size: 1.8rem;
+                border: 1px solid $c_c3;
+            }
+            button {
+                background-color: $c_c3;
+                color: #ffffff;
+            }
         }
-        button {
-            width: 100%;
-            background-color: $c_c3;
-            border: none;
-        }
+    }
+    .overlay-background.visible {
+        @include modal;
+        z-index: 32;
+        background-color: rgba(0, 0, 0, .8);
     }
 }
 

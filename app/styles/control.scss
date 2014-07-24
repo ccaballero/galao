@@ -28,36 +28,39 @@
 }
 
 header {
-    height: 45px;
+    height: 38px;
     background-color: $c_c3;
-    border-bottom: 1px solid $c_c1;
+    border-bottom: 1px solid $c_c3;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    font-size: 1.8rem;
-    color: $c_c5;
-    div {
-        height: inherit;
-        padding: 0 0.2rem;
-        display: inline-block;
+    font-size: 1.4rem;
+    color: #ffffff;
+    div.left {
+        float: left;
+        margin-top: 5px;
+        margin-left: 8px;
+    }
+    div.right {
+        float: right;
+        margin-top: 5px;
+        margin-right: 8px;
     }
     h1 {
         margin: 0;
-        padding: 0.2rem 0 0 0;
-        font-size: inherit;
-        display: inline-block;
+        padding: 0;
+        font-size: 1.65rem;
+        text-align: center;
     }
-    .right {
-        float: right;
-        padding: 0.3rem 0.5rem;
+    a {
         cursor: pointer;
     }
 }
 
 #control {
     position: absolute;
-    top: 45px;
+    top: 40px;
     bottom: 0px;
     left: 0px;
     right: 0px;
@@ -73,7 +76,7 @@ header {
         }
     }
     .fa {
-        font-size: 9.5rem;
+        font-size: 8.0rem;
         color: $c_c3;
     }
 }
