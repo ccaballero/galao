@@ -37,6 +37,11 @@ module.exports=function(grunt){
         'htmlmin'
     ]);
 
+    grunt.registerTask('fxos', [
+        'build',
+        'copy:fxos'
+    ]);
+
     grunt.initConfig({
         clean: {
             server:'.tmp',
@@ -107,6 +112,35 @@ module.exports=function(grunt){
                         '{,*/}*.html',
                         'styles/fonts/{,*/}*.*'
                     ]
+                }]
+            },
+            fxos:{
+                files:[{
+                    src:'dist/control.html',
+                    dest:'dist/fxos/index.html'
+                },{
+                    src:'app/manifest.webapp',
+                    dest:'dist/fxos/manifest.webapp'
+                },{
+                    expand:true,
+                    cwd:'dist/fonts/',
+                    src:['**'],
+                    dest:'dist/fxos/fonts'
+                },{
+                    expand:true,
+                    cwd:'dist/scripts/',
+                    src:['**'],
+                    dest:'dist/fxos/scripts'
+                },{
+                    expand:true,
+                    cwd:'app/images/',
+                    src:['**'],
+                    dest:'dist/fxos/images'
+                },{
+                    expand:true,
+                    cwd:'dist/styles/',
+                    src:['**'],
+                    dest:'dist/fxos/styles'
                 }]
             }
         },

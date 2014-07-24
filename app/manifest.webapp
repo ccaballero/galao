@@ -1,0 +1,16 @@
+{
+    "name": "galão remote",
+    "type": "web",
+    "description": "Remote control for slideshow in galao app",
+    "launch_path": "/index.html",
+    "icons": {
+        "60": "/images/logo60.png",
+        "128": "/images/logo128.png"
+    },
+    "developer": {
+        "name": "Carlos E. Caballero B.",
+        "url": "https://github.com/ccaballero"
+    },
+    "default_locale": "en"
+}
+
