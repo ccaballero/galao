@@ -1,30 +1,32 @@
 'use strict';
 
-$(function(){
-    var host='localhost';
-    var port='9001';
-    var connection;
+var host='localhost';
+var port='9001';
 
+$(function(){
     window.WebSocket=window.WebSocket||window.MozWebSocket;
 
-    var f=function(connection,task){
+    var request=function(connection,task){
         console.log(task);
         connection.send(JSON.stringify({action:task}));
     };
 
-    var connect=function(host,port){
+    var connection;
+    var connect=function(){
         connection=new WebSocket('ws://'+host+':'+port);
         connection.onopen=function(){
             console.log('starting the remote control over '+host+':'+port);
         };
-        connection.onerror=function(error){};
+        connection.onerror=function(error){
+            console.log('fail the connection in '+host+':'+port);
+        };
         connection.onmessage=function(message){};
     };
 
-    $('.up').click(function(){f(connection,'up')});
-    $('.down').click(function(){f(connection,'down')});
-    $('.prev').click(function(){f(connection,'prev')});
-    $('.next').click(function(){f(connection,'next')});
+    $('.up').click(function(){request(connection,'up')});
+    $('.down').click(function(){request(connection,'down')});
+    $('.prev').click(function(){request(connection,'prev')});
+    $('.next').click(function(){request(connection,'next')});
 
     var overlay = new Overlay(document.getElementsByClassName('overlay')[0], {
             class_name: 'overlay',
@@ -42,16 +44,16 @@ $(function(){
             }
         }
     );
-
     $('.settings').click(function(){
         overlay.append_content($('#connect').html());
+        $('input[name="host"]').val(host);
+        $('input[name="port"]').val(port);
         overlay.show();
 
         $('.connect').click(function(){
-            connect(
-                $('input[name="host"]').val(),
-                $('input[name="port"]').val()
-            );
+            host=$('input[name="host"]').val();
+            port=$('input[name="port"]').val();
+            connect();
             overlay.hide();
         });
     });

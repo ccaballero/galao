@@ -58,6 +58,20 @@ header {
     }
 }
 
+nav.pushy {
+    font-size: 1.3rem;
+    box-sizing: border-box;
+    ul {
+        margin: 0;
+        padding: 0;
+        li {
+            a {
+                padding: 0.5rem 0.5rem;
+            }
+        }
+    }
+}
+
 #control {
     position: absolute;
     top: 40px;

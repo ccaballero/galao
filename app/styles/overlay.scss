@@ -1,7 +1,7 @@
 @import "palette";
 
 @mixin modal {
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
@@ -18,58 +18,63 @@
 
 #settings {
     .overlay, .overlay-background {
+        @include modal;
         display: none;
+        opacity: 0;
+        transition: opacity 750ms;
     }
     .overlay.visible {
-        @include modal;
+        opacity: 1;
         z-index: 35;
-
-        .overlay-content {
-            @include flex;
-            width: 80%;
-            margin: 0 auto;
-
-            .overlay-header {
-                width: 100%;
-                overflow: hidden;
-                position: relative;
-
-                .close {
-                    color: #ffffff;
-                    float: right;
-                    font-size: 1.6rem;
-                    height: 21px;
-                    line-height: 22px;
-                    margin: 14px 4px 12px;
-                    text-align: center;
-                    text-decoration: none;
-                    width: 22px;
-                }
-                .close:after {
-                    content: 'x';
-                }
-                .close:hover {
-                    color: $c_c3;
-                }
-            }
-
-            input, button {
-                margin: 0.75rem 0rem;
-                padding: 3px;
-                width: 100%;
-                font-size: 1.8rem;
-                border: 1px solid $c_c3;
-            }
-            button {
-                background-color: $c_c3;
-                color: #ffffff;
-            }
-        }
     }
     .overlay-background.visible {
-        @include modal;
+        opacity: 1;
         z-index: 32;
         background-color: rgba(0, 0, 0, .8);
+    }
+    .overlay-content {
+        @include flex;
+        width: 80%;
+        margin: 0 auto;
+
+        .overlay-header {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+
+            .close {
+                background-color: $c_c3;
+                color: $c_gray;
+                float: right;
+                font-size: 1.6rem;
+                height: 22px;
+                line-height: 18px;
+                margin: 14px 4px 12px;
+                text-align: center;
+                text-decoration: none;
+                width: 22px;
+                border-radius: 5px;
+            }
+            .close:after {
+                content: 'x';
+            }
+            .close:hover {
+                color: $c_c3;
+            }
+        }
+
+        input, button {
+            margin: 0.75rem 0rem;
+            padding: 3px;
+            width: 100%;
+            font-size: 1.8rem;
+            border: 1px solid $c_c3;
+            border-radius: 5px;
+            color: $c_gray;
+        }
+        button {
+            background-color: $c_c3;
+        }
     }
 }
 
